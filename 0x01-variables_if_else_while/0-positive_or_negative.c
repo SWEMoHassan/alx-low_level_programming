@@ -5,6 +5,13 @@
 /* more headers goes there */
 
 /* betty style doc for function main goes there */
+
+/**
+ * main - Entry point
+ * function:checks if the number is P, N or Zero
+ * Return: Always 0 (Success)
+ */
+
 int main(void)
 {
 int n;
