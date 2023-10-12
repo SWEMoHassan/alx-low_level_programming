@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
+void print_line(int n);
 int _putchar(char c);
-void more_numbers(void);
 
 #endif /* MAIN_H */
