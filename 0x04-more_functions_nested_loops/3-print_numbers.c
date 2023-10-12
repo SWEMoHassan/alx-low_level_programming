@@ -5,12 +5,10 @@
  */
 void print_numbers(void)
 {
-char digit;
-digit = '0';
-while (digit <= '9')
+int number;
+for (number = 0; number <= 9; number++)
 {
-write(1, &digit, 1);
-digit++;
+_putchar(number + '0');
 }
-write(1, "\n", 1);
+_putchar('\n');
 }
