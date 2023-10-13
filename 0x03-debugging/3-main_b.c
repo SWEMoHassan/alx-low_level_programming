@@ -6,13 +6,16 @@
  * Return: Always 0.
  */
 
-int main(void)
+void print_remaining_days(int month, int day, int year);
+
+int main()
 {
-int month = 2;
-int day = 29;
-int year = 2000;
-printf("Date: %02d/%02d/%04d\n", month, day, year);
-day = convert_day(month, day);
-print_remaining_days(month, day, year);
-return (0);
+	int month;
+  int day;
+  int year;
+  printf("Enter the date (MM/DD/YYYY): ");
+  scanf("%d/%d/%d", &month, &day, &year);
+  print_remaining_days(month, day, year);
+
+  return 0;
 }
