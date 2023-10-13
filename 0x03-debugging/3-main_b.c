@@ -2,28 +2,38 @@
 #include "main.h"
 
 /**
- * main - Entry point of the program
- *
- * This function tests the functionality of the convert_day
- * and print_remaining_days functions for a leap year date.
- *
- * Return: Always 0 (indicating success)
- */
+* print_remaining_days - takes a date and prints how many days are
+* left in the year, taking leap years into account
+* @month: month in number format
+* @day: day of month
+* @year: year
+* Return: void
+*/
 
-int main(void)
+void print_remaining_days(int month, int day, int year)
 {
-int month;
-int day;
-int year;
-
-month = 2;
-day = 29;
-year = 2000;
-
-printf("Date: %02d/%02d/%04d\n", month, day, year);
-
-day = convert_day(month, day);
-print_remaining_days(month, day, year);
-
-return (0);
+int days_in_month[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+int total_days = 0;
+for (int i = 1; i < month; i++)
+{
+total_days += days_in_month[i];
+}
+total_days += day;
+if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+{
+days_in_month[2] = 29;
+}
+if (month > 2)
+{
+total_days++;
+}
+printf("Day of the year: %d\n", total_days);
+if (days_in_month[2] == 29 && month > 2 && day > 29)
+{
+printf("Invalid date: %02d/%02d/%04d\n", month, day, year);
+}
+else
+{
+printf("Remaining days: %d\n", days_in_month[2] - total_days);
+}
 }
