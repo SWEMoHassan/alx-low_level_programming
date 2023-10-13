@@ -12,31 +12,30 @@
 
 void print_remaining_days(int month, int day, int year)
 {
-int days_in_month[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-int total_days = 0;
-for (int i = 1; i < month; i++)
+if ((year % 4 == 0 || year % 400 == 0) && !(year % 100 == 0))
 {
-total_days += days_in_month[i];
+if (month == 2 && day > 59)
+{
+day++;
 }
-total_days += day;
-if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
-{
-days_in_month[2] = 29; // February has 29 days in a leap year
-}
-if (month > 2 && day > days_in_month[2])
-{
-printf("Invalid date: %02d/%02d/%04d\n", month, day, year);
+printf("Day of the year: %d\n", day);
+printf("Remaining days: %d\n", 366 - day);
 }
 else
 {
-if (month == 2 && day == 29 && days_in_month[2] == 28)
+if (month == 2 && day == 60)
 {
-printf("Invalid date: %02d/%02d/%04d (Not a leap year)\n", month, day, year);
+printf("Invalid date: %02d/%02d/%04d\n", month, day - 31, year);
+exit(1);
 }
 else
 {
-printf("Day of the year: %d\n", total_days);
-printf("Remaining days: %d\n", days_in_month[2] - total_days);
+printf("Day of the year: %d\n", day);
+printf("Remaining days: %d\n", 365 - day);
+if (month == 2 && (year % 4 == 0 || year % 400 == 0) && !(year % 100 == 0))
+{
+printf("Remaining days: %d\n", 365 - day - 1);
+}
 }
 }
 }
