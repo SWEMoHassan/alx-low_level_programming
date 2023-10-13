@@ -1,8 +1,9 @@
 #include "main.h"
 
 /**
- * print_line - prints a straight line of underscores in the terminal
- * @n: number of times '_' should be printed
+ * print_line - prints a line of underscores in the terminal
+ * @n: number of times the character '_' should be printed
+ * Description: If n is 0 or less, prints a newline.
  */
 void print_line(int n)
 {
@@ -12,10 +13,7 @@ _putchar('\n');
 }
 else
 {
-int i;
-for (i = 0; i < n; i++)
-{
 _putchar('_');
-}
+print_line(n - 1);
 }
 }
