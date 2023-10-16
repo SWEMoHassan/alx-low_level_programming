@@ -3,6 +3,8 @@
 #include <time.h>
 #include <string.h>
 
+#define PASSWORD_LENGTH 5
+
 /**
  * generate_password - generates a random password for 101-crackme
  * @password: pointer to the password string
@@ -24,12 +26,10 @@ password[i] = charset[index];
 password[length] = '\0';
 }
 
-int main(void)
-{
-int password_length = 5;
-char password[password_length + 1];
+int main(void) {
+char password[PASSWORD_LENGTH + 1];
 
-generate_password(password, password_length);
+generate_password(password, PASSWORD_LENGTH);
 printf("Generated Password: %s\n", password);
 
 return (0);
