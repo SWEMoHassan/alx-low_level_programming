@@ -17,7 +17,8 @@ int charset_length = strlen(charset);
 
 srand(time(NULL));
 
-for (int i = 0; i < length; ++i)
+int i;
+for (i = 0; i < length; ++i)
 {
 int index = rand() % charset_length;
 password[i] = charset[index];
