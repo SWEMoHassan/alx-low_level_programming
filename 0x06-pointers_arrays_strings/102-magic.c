@@ -13,7 +13,7 @@ p = &n;
 * Set the value at memory address (p + 5) to 98
 */
 *(p + 5) = 98;
-
+/* ...so that this prints a[2] = 98\n */
 printf("a[2] = %d\n", a[2]);
 return (0);
 }
