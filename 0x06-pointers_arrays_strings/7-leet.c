@@ -9,20 +9,18 @@ char *leet(char *str)
 {
 int i, j;
 char leet_map[] = "aAeEoOtTlL";
-char leet_replace[] = "44330771";
+char leet_replace[] = "43071";
 
 i = 0;
 while (str[i] != '\0')
 {
-j = 0;
-while (leet_map[j] != '\0')
+for (j = 0; leet_map[j] != '\0'; j++)
 {
 if (str[i] == leet_map[j])
 {
-str[i] = leet_replace[j];
+str[i] = leet_replace[j / 2];
 break;
 }
-j++;
 }
 i++;
 }
