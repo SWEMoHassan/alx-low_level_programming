@@ -1,53 +1,55 @@
 #include "main.h"
 
 /**
- * print_diagsums - prints the sum of the diagonals
+ * print_diagsums - prints the sum of the two diagonals of a square matrix
  * @a: pointer to the square matrix
  * @size: size of the matrix
+ *
+ * Return: void
  */
 void print_diagsums(int *a, int size)
 {
-int i;
-int diag1 = 0;
-int diag2 = 0;
+int i, diag1 = 0, diag2 = 0;
 for (i = 0; i < size; i++)
 {
 diag1 += *(a + i * size + i);
 diag2 += *(a + i * size + (size - 1 - i));
 }
-if (size == 3)
+if (size > 0)
 {
-_putchar((diag1 / 100) % 10 + '0');
-_putchar((diag1 / 10) % 10 + '0');
-_putchar(diag1 % 10 + '0');
-_putchar(',');
-_putchar(' ');
-_putchar((diag2 / 1000000) % 10 + '0');
-_putchar((diag2 / 100000) % 10 + '0');
-_putchar((diag2 / 10000) % 10 + '0');
-_putchar((diag2 / 1000) % 10 + '0');
-_putchar((diag2 / 100) % 10 + '0');
-_putchar((diag2 / 10) % 10 + '0');
-_putchar(diag2 % 10 + '0');
+int temp = diag1;
+int divisor = 1;
+while (temp >= 10)
+{
+temp /= 10;
+divisor *= 10;
 }
-else if (size == 5)
+while (divisor > 0)
 {
-_putchar((diag1 / 100) % 10 + '0');
-_putchar((diag1 / 10) % 10 + '0');
-_putchar(diag1 % 10 + '0');
+_putchar('0' + diag1 / divisor);
+diag1 %= divisor;
+divisor /= 10;
+}
 _putchar(',');
-_putchar(' ');
-_putchar((diag2 / 1000000000) % 10 + '0');
-_putchar((diag2 / 100000000) % 10 + '0');
-_putchar((diag2 / 10000000) % 10 + '0');
-_putchar((diag2 / 1000000) % 10 + '0');
-_putchar((diag2 / 100000) % 10 + '0');
-_putchar((diag2 / 10000) % 10 + '0');
-_putchar((diag2 / 1000) % 10 + '0');
-_putchar((diag2 / 100) % 10 + '0');
-_putchar((diag2 / 10) % 10 + '0');
-_putchar(diag2 % 10 + '0');
+temp = diag2;
+divisor = 1;
+while (temp >= 10)
+{
+temp /= 10;
+divisor *= 10;
+}
+while (divisor > 0)
+{
+_putchar('0' + diag2 / divisor);
+diag2 %= divisor;
+divisor /= 10;
+}
+}
+else
+{
+_putchar('0');
+_putchar(',');
+_putchar('0');
 }
 _putchar('\n');
 }
-
