@@ -1,0 +1,180 @@
+!<arch>
+_abs.c/         0           0     0     644     72        `
+#include <unistd.h>
+
+int _abs(int n)
+{
+    // Function implementation
+}
+_atoi.c/        0           0     0     644     93        `
+#include <unistd.h>
+#include "main.h"
+
+int _atoi(char *s)
+{
+    // Function implementation
+}
+
+_isalpha.c/     0           0     0     644     76        `
+#include <unistd.h>
+
+int _isalpha(int c)
+{
+    // Function implementation
+}
+_isdigit.c/     0           0     0     644     94        `
+#include <unistd.h>
+#include "main.h"
+
+int _isdigit(int c)
+{
+    // Function implementation
+}
+_islower.c/     0           0     0     644     76        `
+#include <unistd.h>
+
+int _islower(int c)
+{
+    // Function implementation
+}
+_isupper.c/     0           0     0     644     76        `
+#include <unistd.h>
+
+int _isupper(int c)
+{
+    // Function implementation
+}
+main.c/         0           0     0     644     148       `
+#include "main.h"
+
+int main(void)
+{
+    _puts("\"At the end of the day, my goal was to be the best hacker\"\n\t- Kevin Mitnick");
+    return (0);
+}
+_memcpy.c/      0           0     0     644     127       `
+#include <unistd.h>
+#include "main.h"
+
+char *_memcpy(char *dest, char *src, unsigned int n)
+{
+    // Function implementation
+}
+
+_memset.c/      0           0     0     644     121       `
+#include <unistd.h>
+#include "main.h"
+
+char *_memset(char *s, char b, unsigned int n)
+{
+    // Function implementation
+}
+
+_putchar.c/     0           0     0     644     247       `
+#include <unistd.h>
+
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+_puts.c/        0           0     0     644     94        `
+#include <unistd.h>
+#include "main.h"
+
+void _puts(char *s)
+{
+    // Function implementation
+}
+_strcat.c/      0           0     0     644     111       `
+#include <unistd.h>
+#include "main.h"
+
+char *_strcat(char *dest, char *src)
+{
+    // Function implementation
+}
+
+_strchr.c/      0           0     0     644     105       `
+#include <unistd.h>
+#include "main.h"
+
+char *_strchr(char *s, char c)
+{
+    // Function implementation
+}
+
+_strcmp.c/      0           0     0     644     106       `
+#include <unistd.h>
+#include "main.h"
+
+int _strcmp(char *s1, char *s2)
+{
+    // Function implementation
+}
+_strcpy.c/      0           0     0     644     111       `
+#include <unistd.h>
+#include "main.h"
+
+char *_strcpy(char *dest, char *src)
+{
+    // Function implementation
+}
+
+_strlen.c/      0           0     0     644     94        `
+#include <unistd.h>
+#include "main.h"
+
+int _isdigit(int c)
+{
+    // Function implementation
+}
+_strncat.c/     0           0     0     644     119       `
+#include <unistd.h>
+#include "main.h"
+
+char *_strncat(char *dest, char *src, int n)
+{
+    // Function implementation
+}
+
+_strncpy.c/     0           0     0     644     119       `
+#include <unistd.h>
+#include "main.h"
+
+char *_strncpy(char *dest, char *src, int n)
+{
+    // Function implementation
+}
+
+_strpbrk.c/     0           0     0     644     112       `
+#include <unistd.h>
+#include "main.h"
+
+char *_strpbrk(char *s, char *accept)
+{
+    // Function implementation
+}
+_strspn.c/      0           0     0     644     118       `
+#include <unistd.h>
+#include "main.h"
+
+unsigned int _strspn(char *s, char *accept)
+{
+    // Function implementation
+}
+_strstr.c/      0           0     0     644     118       `
+#include <unistd.h>
+#include "main.h"
+
+char *_strstr(char *haystack, char *needle)
+{
+    // Function implementation
+}
