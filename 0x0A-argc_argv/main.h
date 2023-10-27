@@ -1,8 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-void _putchar(char c);
-int main(int argc, char *argv[]);
+#include <unistd.h>
+
+int _putchar(char c);
 
 #endif /* MAIN_H */
 
