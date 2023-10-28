@@ -2,17 +2,25 @@
 #include <stdio.h>
 
 /**
- * _puts - Prints a string followed by a new line to stdout
+ * print_string - Prints a string followed by a new line
  * @str: The string to be printed
  */
 void print_string(char *str)
 {
-while (*str != '\0')
+while (*str)
 {
 _putchar(*str);
 str++;
 }
+_putchar('\n');
 }
+
+/**
+ * main - Entry point of the program
+ * @argc: Number of command-line arguments
+ * @argv: Array of command-line arguments
+ * Return: 0 on success
+ */
 int main(int argc, char **argv)
 {
 int i;
