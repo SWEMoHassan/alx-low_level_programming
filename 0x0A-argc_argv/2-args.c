@@ -1,25 +1,24 @@
-#include "main.h"
 #include <stdio.h>
+#include "main.h"
 
 /**
- * print_string - Prints a string followed by a new line
- * @str: The string to be printed
+ * print_string - Prints a string to the console.
+ *
+ * @str: The string to print.
  */
 void print_string(char *str)
 {
-while (*str)
+while (*str != '\0')
 {
 _putchar(*str);
 str++;
 }
-_putchar('\n');
 }
-
 /**
- * main - Entry point of the program
- * @argc: Number of command-line arguments
- * @argv: Array of command-line arguments
- * Return: 0 on success
+ * main - Entry point of the program.
+ * @argc: The number of command-line arguments.
+ * @argv: The array of command-line arguments.
+ * Return: 0 on success, or a non-zero value on failure.
  */
 int main(int argc, char **argv)
 {
