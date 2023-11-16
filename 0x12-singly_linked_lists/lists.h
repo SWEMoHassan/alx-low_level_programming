@@ -1,7 +1,7 @@
-#ifndef VARIADIC_FUNCTIONS_H
-#define VARIADIC_FUNCTIONS_H
+#ifndef LISTS_H
+#define LISTS_H
 
-#include <stdlib.h>
+#include <stddef.h>
 
 /**
  * struct list_s - singly linked list
@@ -24,4 +24,5 @@ size_t print_list(const list_t *h);
 /* _putchar prototype */
 int _putchar(char c);
 
-#endif /* VARIADIC_FUNCTIONS_H */
+#endif /* LISTS_H */
+
