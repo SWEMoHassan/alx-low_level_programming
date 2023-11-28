@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 int _putchar(char c);
-ssize_t read_textfile(const char *filename, size_t letters);
+int copy_content(const char *file_from, const char *file_to);
 
 #endif /* MAIN_H */
 
