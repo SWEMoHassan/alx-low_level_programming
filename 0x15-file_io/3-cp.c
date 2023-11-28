@@ -1,64 +1,80 @@
-#include <sys/stat.h>
-#include <stdio.h>
 #include <fcntl.h>
+#include <stdlib.h>
 #include <unistd.h>
-#define BUF_SIZE 1024
+#include <stdio.h>
+#include "main.h"
 
-/**
- * Copies the content of a file to another file.
- * @param file_from: The file to read from.
- * @param file_to: The file to write to.
- * @return: 0 on success, -1 on error.
- */
-int copy_file(const char *file_from, const char *file_to)
+#define BUFFER_SIZE 1024
+
+ssize_t read_write_files(int from_fd, int to_fd);
+
+void error_handler(int code, char *file, int fd)
 {
-int fd_from, fd_to;
-char buf[BUF_SIZE];
-int bytes_read;
-fd_from = open(file_from, O_RDONLY);
-if (fd_from < 0)
+if (code == 97)
 {
-dprintf(2, "Error: Can't read from file %s\n", file_from);
-return (-1);
+dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 }
-fd_to = open(file_to, O_WRONLY | O_TRUNC | O_CREAT, 0664);
-if (fd_to < 0)
+else if (code == 98)
 {
-dprintf(2, "Error: Can't write to file %s\n", file_to);
-close(fd_from);
-return (-1);
+dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file);
 }
-while ((bytes_read = read(fd_from, buf, BUF_SIZE)) > 0)
+else if (code == 99)
 {
-if (write(fd_to, buf, bytes_read) < 0) {
-dprintf(2, "Error: Can't write to file %s\n", file_to);
-close(fd_from);
-close(fd_to);
-return (-1);
+dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
 }
-}
-if (close(fd_from) < 0)
+else if (code == 100)
 {
-dprintf(2, "Error: Can't close fd %d\n", fd_from);
-return (-1);
+dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 }
-if (close(fd_to) < 0)
-{
-dprintf(2, "Error: Can't close fd %d\n", fd_to);
-return (-1);
-}
-return (0);
+exit(code);
 }
 int main(int argc, char *argv[])
 {
+int from_fd, to_fd;
+ssize_t bytes_copied;
 if (argc != 3)
 {
-dprintf(2, "Usage: cp file_from file_to\n");
-return (97);
+dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
+exit(97);
 }
-if (copy_file(argv[1], argv[2]) < 0)
+from_fd = open(argv[1], O_RDONLY);
+if (from_fd == -1)
 {
-return (99);
+dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+exit(98);
+}
+to_fd = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+if (to_fd == -1)
+{
+error_handler(99, argv[2], to_fd);
+}
+bytes_copied = read_write_files(from_fd, to_fd);
+if (bytes_copied == -1)
+{
+error_handler(99, argv[2], to_fd);
+}
+if (close(from_fd) == -1 || close(to_fd) == -1)
+{
+error_handler(100, "", -1);
 }
 return (0);
+}
+ssize_t read_write_files(int from_fd, int to_fd)
+{
+char buffer[BUFFER_SIZE];
+ssize_t bytes_read, bytes_written, total_bytes = 0;
+while ((bytes_read = read(from_fd, buffer, BUFFER_SIZE)) > 0)
+{
+bytes_written = write(to_fd, buffer, bytes_read);
+if (bytes_written == -1 || bytes_written != bytes_read)
+{
+return (-1);
+}
+total_bytes += bytes_written;
+}
+if (bytes_read == -1)
+{
+return (-1);
+}
+return (total_bytes);
 }
